@@ -9056,7 +9056,7 @@ function removeProperty(node, propName, propValue, previous) {
             } else if (typeof node[propName] === "string") {
                 node[propName] = ""
             } else {
-                node[propName] = null
+                node.removeAttribute(propName)
             }
         } else if (previousValue.unhook) {
             previousValue.unhook(node, propName, propValue)
