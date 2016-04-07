@@ -9036,7 +9036,6 @@ function applyProperties(node, props, previous) {
 function removeProperty(node, propName, propValue, previous) {
     if (previous) {
         var previousValue = previous[propName]
-        
                 
         console.log("PropName: ", propName)
         console.log("Previous: ", previous)
@@ -9054,7 +9053,7 @@ function removeProperty(node, propName, propValue, previous) {
                 for (var i in previousValue) {
                     node.style[i] = ""
                 }
-            } else if (typeof previousValue === "string") {
+            } else if (typeof node[propName] === "string") {
                 node[propName] = ""
             } else {
                 node[propName] = null
