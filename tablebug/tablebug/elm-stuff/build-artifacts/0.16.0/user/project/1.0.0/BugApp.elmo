@@ -1,0 +1,20 @@
+Elm.BugApp = Elm.BugApp || {};
+Elm.BugApp.make = function (_elm) {
+   "use strict";
+   _elm.BugApp = _elm.BugApp || {};
+   if (_elm.BugApp.values) return _elm.BugApp.values;
+   var _U = Elm.Native.Utils.make(_elm),
+   $Basics = Elm.Basics.make(_elm),
+   $Debug = Elm.Debug.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm),
+   $StartApp$Simple = Elm.StartApp.Simple.make(_elm),
+   $Table = Elm.Table.make(_elm);
+   var _op = {};
+   var main = $StartApp$Simple.start({model: $Table.init
+                                     ,update: $Table.update
+                                     ,view: $Table.view});
+   return _elm.BugApp.values = {_op: _op,main: main};
+};

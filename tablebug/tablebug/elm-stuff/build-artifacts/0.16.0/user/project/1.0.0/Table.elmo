@@ -1,0 +1,137 @@
+Elm.Table = Elm.Table || {};
+Elm.Table.make = function (_elm) {
+   "use strict";
+   _elm.Table = _elm.Table || {};
+   if (_elm.Table.values) return _elm.Table.values;
+   var _U = Elm.Native.Utils.make(_elm),
+   $Basics = Elm.Basics.make(_elm),
+   $Debug = Elm.Debug.make(_elm),
+   $Html = Elm.Html.make(_elm),
+   $Html$Attributes = Elm.Html.Attributes.make(_elm),
+   $Html$Events = Elm.Html.Events.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm);
+   var _op = {};
+   var renderTemperatureFlip = function (_p0) {
+      var _p1 = _p0;
+      return A2($Html.tr,
+      _U.list([]),
+      _U.list([A2($Html.td,
+              _U.list([]),
+              _U.list([$Html.text($Basics.toString(_p1._1))]))
+              ,A2($Html.td,_U.list([]),_U.list([$Html.text(_p1._0)]))]));
+   };
+   var renderTemperature = function (_p2) {
+      var _p3 = _p2;
+      return A2($Html.tr,
+      _U.list([]),
+      _U.list([A2($Html.td,_U.list([]),_U.list([$Html.text(_p3._0)]))
+              ,A2($Html.td,
+              _U.list([]),
+              _U.list([$Html.text($Basics.toString(_p3._1))]))]));
+   };
+   var update = F2(function (action,model) {
+      var y2015 = _U.list([{ctor: "_Tuple2",_0: "january",_1: -10}
+                          ,{ctor: "_Tuple2",_0: "february",_1: 0}
+                          ,{ctor: "_Tuple2",_0: "march",_1: 10}
+                          ,{ctor: "_Tuple2",_0: "april",_1: 19}
+                          ,{ctor: "_Tuple2",_0: "may",_1: 20}
+                          ,{ctor: "_Tuple2",_0: "june",_1: 29}
+                          ,{ctor: "_Tuple2",_0: "july",_1: 40}
+                          ,{ctor: "_Tuple2",_0: "august",_1: 35}
+                          ,{ctor: "_Tuple2",_0: "september",_1: 15}
+                          ,{ctor: "_Tuple2",_0: "october",_1: 3}
+                          ,{ctor: "_Tuple2",_0: "november",_1: 1}
+                          ,{ctor: "_Tuple2",_0: "december",_1: -15}]);
+      var y2014 = _U.list([{ctor: "_Tuple2",_0: "january",_1: -5}
+                          ,{ctor: "_Tuple2",_0: "february",_1: 0}
+                          ,{ctor: "_Tuple2",_0: "march",_1: 10}
+                          ,{ctor: "_Tuple2",_0: "april",_1: 19}
+                          ,{ctor: "_Tuple2",_0: "may",_1: 20}
+                          ,{ctor: "_Tuple2",_0: "june",_1: 29}
+                          ,{ctor: "_Tuple2",_0: "july",_1: 31}
+                          ,{ctor: "_Tuple2",_0: "august",_1: 30}
+                          ,{ctor: "_Tuple2",_0: "september",_1: 15}
+                          ,{ctor: "_Tuple2",_0: "october",_1: 3}
+                          ,{ctor: "_Tuple2",_0: "november",_1: 2}
+                          ,{ctor: "_Tuple2",_0: "december",_1: -10}]);
+      var _p4 = action;
+      if (_p4.ctor === "Year2014") {
+            return _U.update(model,{temperatures: y2014,action: action});
+         } else {
+            return _U.update(model,{temperatures: y2015,action: action});
+         }
+   });
+   var Year2015 = {ctor: "Year2015"};
+   var Year2014 = {ctor: "Year2014"};
+   var view = F2(function (address,model) {
+      return A2($Html.div,
+      _U.list([]),
+      _U.list([A2($Html.div,
+              _U.list([]),
+              _U.list([A2($Html.button,
+                      _U.list([A2($Html$Events.onClick,address,Year2014)]),
+                      _U.list([$Html.text("2014")]))
+                      ,A2($Html.button,
+                      _U.list([A2($Html$Events.onClick,address,Year2015)]),
+                      _U.list([$Html.text("2015")]))]))
+              ,_U.eq(model.action,Year2014) ? A2($Html.table,
+              _U.list([]),
+              _U.list([A2($Html.thead,
+                      _U.list([]),
+                      _U.list([A2($Html.tr,
+                              _U.list([]),
+                              _U.list([A2($Html.th,
+                              _U.list([$Html$Attributes.rowspan(2)
+                                      ,$Html$Attributes.colspan(2)]),
+                              _U.list([$Html.text("statistics")]))]))
+                              ,A2($Html.tr,_U.list([]),_U.list([]))
+                              ,A2($Html.tr,
+                              _U.list([]),
+                              _U.list([A2($Html.th,_U.list([]),_U.list([$Html.text("month")]))
+                                      ,A2($Html.th,
+                                      _U.list([]),
+                                      _U.list([$Html.text("temperature")]))]))]))
+                      ,A2($Html.tbody,
+                      _U.list([]),
+                      A2($List.map,
+                      renderTemperature,
+                      model.temperatures))])) : A2($Html.table,
+              _U.list([]),
+              _U.list([A2($Html.thead,
+                      _U.list([]),
+                      _U.list([A2($Html.tr,
+                              _U.list([]),
+                              _U.list([A2($Html.th,_U.list([]),_U.list([$Html.text("month")]))
+                                      ,A2($Html.th,
+                                      _U.list([]),
+                                      _U.list([$Html.text("temperature")]))]))
+                              ,A2($Html.tr,
+                              _U.list([]),
+                              _U.list([A2($Html.th,
+                              _U.list([$Html$Attributes.rowspan(2)
+                                      ,$Html$Attributes.colspan(2)]),
+                              _U.list([$Html.text("statistics")]))]))
+                              ,A2($Html.tr,_U.list([]),_U.list([]))]))
+                      ,A2($Html.tbody,
+                      _U.list([]),
+                      A2($List.map,renderTemperatureFlip,model.temperatures))]))]));
+   });
+   var noHtml = $Html.text("");
+   var Model = F2(function (a,b) {
+      return {temperatures: a,action: b};
+   });
+   var init = A2(Model,_U.list([]),Year2014);
+   return _elm.Table.values = {_op: _op
+                              ,Model: Model
+                              ,noHtml: noHtml
+                              ,init: init
+                              ,Year2014: Year2014
+                              ,Year2015: Year2015
+                              ,update: update
+                              ,view: view
+                              ,renderTemperature: renderTemperature
+                              ,renderTemperatureFlip: renderTemperatureFlip};
+};
